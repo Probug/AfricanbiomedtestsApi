@@ -1,0 +1,6 @@
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.csprojAssemblyReference.cache
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.AssemblyInfoInputs.cache
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.AssemblyInfo.cs
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.csproj.CoreCompileInputs.cache
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.MvcApplicationPartsAssemblyInfo.cs
+/home/proper/softwareProjects/dotnetProjects/ABMT/NEXT/API/Africanbiomedtests/obj/Debug/netcoreapp3.1/Africanbiomedtests.MvcApplicationPartsAssemblyInfo.cache
