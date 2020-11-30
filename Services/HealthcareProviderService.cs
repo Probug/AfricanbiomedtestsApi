@@ -122,7 +122,7 @@ namespace Africanbiomedtests.Services
                 return;
             }
 
-            // map model to new account object
+            // map model to new healthcareProvider object
             var account = _mapper.Map<HealthcareProvider>(model);
 
             // first registered account is an admin           
@@ -139,7 +139,7 @@ namespace Africanbiomedtests.Services
             account.PasswordHash = BC.HashPassword(model.Password);
 
             // save account
-            _context.Accounts.Add(account);
+            _context.HealthcareProviders.Add(account);
             _context.SaveChanges();
 
             // send email
@@ -202,7 +202,7 @@ namespace Africanbiomedtests.Services
             account.ResetToken = null;
             account.ResetTokenExpires = null;
 
-            _context.Accounts.Update(account);
+            _context.HealthcareProviders.Update(account);
             _context.SaveChanges();
         }
 
@@ -225,7 +225,7 @@ namespace Africanbiomedtests.Services
                 throw new AppException($"Email '{model.Email}' is already registered");
 
             // map model to new account object
-            var account = _mapper.Map<HealthCareProvider>(model);
+            var account = _mapper.Map<HealthcareProvider>(model);
             account.Created = DateTime.UtcNow;
             account.Verified = DateTime.UtcNow;
 
@@ -236,7 +236,7 @@ namespace Africanbiomedtests.Services
             _context.HealthcareProviders.Add(account);
             _context.SaveChanges();
 
-            return _mapper.Map<AccountResponse>(account);
+            return _mapper.Map<HealthcareProviderAccountResponse>(account);
         }
 
         public HealthcareProviderAccountResponse Update(int id, HealthcareProviderUpdateRequest model)
@@ -331,13 +331,13 @@ namespace Africanbiomedtests.Services
             string message;
             if (!string.IsNullOrEmpty(origin))
             {
-                var verifyUrl = $"{origin}/account/verify-email?token={account.VerificationToken}";
+                var verifyUrl = $"{origin}/healthcareprovider/verify-email?token={account.VerificationToken}";
                 message = $@"<p>Please click the below link to verify your email address:</p>
                              <p><a href=""{verifyUrl}"">{verifyUrl}</a></p>";
             }
             else
             {
-                message = $@"<p>Please use the below token to verify your email address with the <code>/accounts/verify-email</code> api route:</p>
+                message = $@"<p>Please use the below token to verify your email address with the <code>/healthcareprovider/verify-email</code> api route:</p>
                              <p><code>{account.VerificationToken}</code></p>";
             }
 
@@ -354,9 +354,9 @@ namespace Africanbiomedtests.Services
         {
             string message;
             if (!string.IsNullOrEmpty(origin))
-                message = $@"<p>If you don't know your password please visit the <a href=""{origin}/account/forgot-password"">forgot password</a> page.</p>";
+                message = $@"<p>If you don't know your password please visit the <a href=""{origin}/healthcareprovider/forgot-password"">forgot password</a> page.</p>";
             else
-                message = "<p>If you don't know your password you can reset it via the <code>/accounts/forgot-password</code> api route.</p>";
+                message = "<p>If you don't know your password you can reset it via the <code>/healthcareprovider/forgot-password</code> api route.</p>";
 
             _emailService.Send(
                 to: email,
@@ -372,19 +372,19 @@ namespace Africanbiomedtests.Services
             string message;
             if (!string.IsNullOrEmpty(origin))
             {
-                var resetUrl = $"{origin}/account/reset-password?token={account.ResetToken}";
+                var resetUrl = $"{origin}/healthcareprovider/reset-password?token={account.ResetToken}";
                 message = $@"<p>Please click the below link to reset your password, the link will be valid for 1 day:</p>
                              <p><a href=""{resetUrl}"">{resetUrl}</a></p>";
             }
             else
             {
-                message = $@"<p>Please use the below token to reset your password with the <code>/accounts/reset-password</code> api route:</p>
+                message = $@"<p>Please use the below token to reset your password with the <code>/healthcareprovider/reset-password</code> api route:</p>
                              <p><code>{account.ResetToken}</code></p>";
             }
 
             _emailService.Send(
                 to: account.Email,
-                subject: "Sign-up Verification API - Reset Password",
+                subject: "Africanbiomedtests - Reset Password",
                 html: $@"<h4>Reset Password Email</h4>
                          {message}"
             );

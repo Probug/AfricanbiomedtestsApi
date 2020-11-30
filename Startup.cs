@@ -45,6 +45,8 @@ namespace Africanbiomedtests
 
             // configure DI for application services
             services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<INewbornService, NewbornService>();
+            services.AddScoped<IHealthcareProviderService, HealthcareProviderService>();
             services.AddScoped<IEmailService, EmailService>();
         }
 

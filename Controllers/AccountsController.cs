@@ -13,15 +13,15 @@ namespace Africanbiomedtests.Controllers
     [Route("[controller]")]
     public class AccountsController : BaseController
     {
-        private readonly IAccountService _accountService;
-        private readonly IMapper _mapper;
+         private readonly IAccountService _accountService;
+         private readonly IMapper _mapper;
 
-        public AccountsController(
-            IAccountService accountService,
-            IMapper mapper)
-        {
-            _accountService = accountService;
-            _mapper = mapper;
+         public AccountsController(
+             IAccountService accountService,
+             IMapper mapper)
+         {
+             _accountService = accountService;
+             _mapper = mapper;
         }
 
         [HttpPost("authenticate")]
@@ -115,7 +115,7 @@ namespace Africanbiomedtests.Controllers
         }
 
         [Authorize(Role.Admin)]
-        [HttpPost]
+        [HttpPost("create")]
         public ActionResult<AccountResponse> Create(CreateRequest model)
         {
             var account = _accountService.Create(model);

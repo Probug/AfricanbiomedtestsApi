@@ -339,7 +339,7 @@ namespace Africanbiomedtests.Services
 
             _emailService.Send(
                 to: account.Email,
-                subject: "Sign-up Verification API - Verify Email",
+                subject: "Africanbiomedtests - Verify Email",
                 html: $@"<h4>Verify Email</h4>
                          <p>Thanks for registering!</p>
                          {message}"

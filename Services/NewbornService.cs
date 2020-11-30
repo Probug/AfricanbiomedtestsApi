@@ -12,21 +12,14 @@ using System.Text;
 using Africanbiomedtests.Entities;
 using Africanbiomedtests.Helpers;
 using Africanbiomedtests.Models.Newborns;
+using Microsoft.EntityFrameworkCore;
 
 namespace Africanbiomedtests.Services
 {
         public interface INewbornService
     {
-        //AuthenticateResponse Authenticate(AuthenticateRequest model, string ipAddress);
-        //AuthenticateResponse RefreshToken(string token, string ipAddress);
-        //void RevokeToken(string token, string ipAddress);
-        //void Register(HealthcareProviderRegisterRequest model, string origin);
-        //void VerifyEmail(string token);
-        //void ForgotPassword(ForgotPasswordRequest model, string origin);
-        //void ValidateResetToken(ValidateResetTokenRequest model);
-       // void ResetPassword(ResetPasswordRequest model);
         IEnumerable<NewbornAccountResponse> GetAll();
-        IEnumerable<NewbornAccountResponse> GetByHealthcareProvider(int healthcareProvider);
+        //IEnumerable<NewbornAccountResponse> GetByHealthcareProvider(int healthcareProvider);
         NewbornAccountResponse GetById(int id);
         NewbornAccountResponse Create(NewbornCreateRequest model);
         NewbornAccountResponse Update(int id, NewbornUpdateRequest model);
@@ -58,15 +51,15 @@ namespace Africanbiomedtests.Services
         }
 
         //Return Newborn registered with Healthcare Provider
-        public IEnumerable<NewbornAccountResponse> GetByHealthcareProvider(int healthcareProvider)
-        {
-            // if (_context.Newborns.Any(x => x.HealthCareProvider == _context.HealthcareProviders.SingleOrDefault(x => x.Id)))
+        // public IEnumerable<NewbornAccountResponse> GetByHealthcareProvider(int healthcareProvider)
+        // {
+        //     // if (_context.Newborns.Any(x => x.HealthCareProvider == _context.HealthcareProviders.SingleOrDefault(x => x.Id)))
             
-            //  return _context.Newborns;
-             var newborns = getAccounts(healthcareProvider);
+        //     //  return _context.Newborns;
+        //      var newborns = getAccounts(healthcareProvider);
                
-            return _mapper.Map<IList<NewbornAccountResponse>>(newborns);
-        }
+        //     return _mapper.Map<IList<NewbornAccountResponse>>(newborns);
+        // }
 
         public NewbornAccountResponse GetById(int id)
         {
@@ -128,14 +121,17 @@ namespace Africanbiomedtests.Services
             return newborn;
         }
 
+        //var HealthcareProvider =  new Newborn.HealthcareProvider;
         //Trying to pass current HealthcareProvider.Id as a parameter
-        private Newborn getAccounts(int HealthCareProvider)
-        {
-            var healthcareProvider = _context.Newborns.HealthcareProvider;
+        // private Newborn getAccounts(int HealthCareProvider)
+        // {
+        //     var healthcareProvider = _context.Newborns.HealthcareProvider;
 
-            var newborns = _context.Newborns
-            .FromSqlInterpolated($"SELECT * FROM Newborn WHERE HealthcareProvider = {healthcareProvider}")
-            .ToList();
-        }
+        //     var newborns = _context.Newborns
+        //     .FromSqlInterpolated($"SELECT * FROM Newborn WHERE HealthcareProvider = {healthcareProvider}")
+        //     .ToList();
+
+        //     return healthcareProvider;
+        // }
     }
 }

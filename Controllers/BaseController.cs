@@ -10,5 +10,6 @@ namespace Africanbiomedtests.Controllers
         // returns the current authenticated account (null if not logged in)
         public Account Account => (Account)HttpContext.Items["Account"];
         public HealthcareProvider HealthcareProvider => (HealthcareProvider)HttpContext.Items["HealthcareProvider"];
+        public Newborn Newborn => (Newborn)HttpContext.Items["Newborn"];
     }
 }

@@ -34,7 +34,7 @@ namespace Africanbiomedtests.Helpers
                 ));
 
         //Mapping HealthcareProvider
-            CreateMap<HealthcareProvider, AccountResponse>();
+            CreateMap<HealthcareProvider, HealthcareProviderAccountResponse>();
 
             CreateMap<HealthcareProvider, AuthenticateResponse>();
 
@@ -71,7 +71,7 @@ namespace Africanbiomedtests.Helpers
                         if (prop.GetType() == typeof(string) && string.IsNullOrEmpty((string)prop)) return false;
 
                         // ignore null role
-                        if (x.DestinationMember.Name == "Role" && src.Role == null) return false;
+                        //if (x.DestinationMember.Name == "Role" && src.Role == null) return false;
 
                         return true;
                     }

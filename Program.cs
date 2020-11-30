@@ -20,7 +20,7 @@ namespace Africanbiomedtests
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>().UseUrls("https://localost:5000");
+                    webBuilder.UseStartup<Startup>().UseUrls("https://localhost:4000");
                 });
     }
 }
