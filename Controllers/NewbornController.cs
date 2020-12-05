@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using Africanbiomedtests.Entities;
-using Africanbiomedtests.Models.Accounts;
 using Africanbiomedtests.Models.Newborns;
 using Africanbiomedtests.Services;
 

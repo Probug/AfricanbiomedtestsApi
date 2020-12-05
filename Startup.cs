@@ -47,6 +47,9 @@ namespace Africanbiomedtests
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<INewbornService, NewbornService>();
             services.AddScoped<IHealthcareProviderService, HealthcareProviderService>();
+            services.AddScoped<IMedTestService, MedTestService>();
+            services.AddScoped<IMedTestOrderService, MedTestOrderService>();
+            services.AddScoped<IMedTestResultService, MedTestResultService>();
             services.AddScoped<IEmailService, EmailService>();
         }
 

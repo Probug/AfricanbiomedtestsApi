@@ -11,5 +11,8 @@ namespace Africanbiomedtests.Controllers
         public Account Account => (Account)HttpContext.Items["Account"];
         public HealthcareProvider HealthcareProvider => (HealthcareProvider)HttpContext.Items["HealthcareProvider"];
         public Newborn Newborn => (Newborn)HttpContext.Items["Newborn"];
+        public MedTest MedTests => (MedTest)HttpContext.Items["MedTest"];
+        public MedTestOrder MedTestOrder => (MedTestOrder)HttpContext.Items["MedTestOrder"];
+        public MedTestResult MedTestResult => (MedTestResult)HttpContext.Items["MedTestResult"];
     }
 }

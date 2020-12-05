@@ -10,9 +10,9 @@ namespace Africanbiomedtests.Helpers
         public DbSet<Account> Accounts { get; set; }
         public DbSet<HealthcareProvider> HealthcareProviders { get; set; }
         public DbSet<Newborn> Newborns { get; set; }
-        //public DbSet<MedTests> MedTests { get; set; }
-        //public DbSet<MedTestsOrder> MedTestsOrders { get; set; } 
-        //public DbSet<MedTestsResults> MedTestsResults { get; set; }
+        public DbSet<MedTest> MedTest { get; set; }
+        public DbSet<MedTestOrder> MedTestOrder { get; set; } 
+        public DbSet<MedTestResult> MedTestResult { get; set; }
         
         private readonly IConfiguration Configuration;
 

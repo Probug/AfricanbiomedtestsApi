@@ -9,12 +9,12 @@ namespace Africanbiomedtests.Models.Newborns
 
         [Required]
         [StringLength(30)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(30)]
-        [RegularExpression(@"^[A-Z]+[a-zA-Z]*$")]
+        [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
         public string LastName { get; set; }
 
         [Required]
