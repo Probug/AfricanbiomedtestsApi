@@ -49,9 +49,11 @@ namespace Africanbiomedtests.Middleware
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
                 var accountId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
+                var HealthcareProviderId = int.Parse(jwtToken.Claims.First(x => x.Type == "id").Value);
 
                 // attach account to context on successful jwt validation
                 context.Items["Account"] = await dataContext.Accounts.FindAsync(accountId);
+                context.Items["HealthcareProvider"] = await dataContext.HealthcareProviders.FindAsync(healthcareproviderId);
             }
             catch 
             {

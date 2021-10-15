@@ -8,10 +8,12 @@ namespace Africanbiomedtests.Entities
 {
         public class MedTest
     {
-        [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
+        public Account Account { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }
 

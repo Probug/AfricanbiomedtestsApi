@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 using Africanbiomedtests.Helpers;
 using Africanbiomedtests.Middleware;
 using Africanbiomedtests.Services;
+using Microsoft.OpenApi.Models;
 
 namespace Africanbiomedtests
 {
@@ -34,11 +35,29 @@ namespace Africanbiomedtests
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>();
-            services.AddCors();
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
+            services.AddDbContext<DataContext>(x =>
+           x.UseSqlServer("ConnectionStrings")
+           .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution)); 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                   builder =>
+                   {
+                       builder
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .SetIsOriginAllowed(origin => true) //allow any origin
+                       .AllowCredentials(); //allow credentials
+                   });
+            });
+            // services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.IgnoreNullValues = true);
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "africanbiomedtests", Version = "v1" });
+            });
 
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -60,23 +79,40 @@ namespace Africanbiomedtests
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }
 
+                // generated swagger json and swagger ui middleware
+                app.UseSwagger(options =>
+                                {
+                                    options.PreSerializeFilters.Add((swagger, httpReq) =>
+                                    {
+                                        if (httpReq.Headers.ContainsKey("X-Forwarded-Host"))
+                                        {
+                                            //The httpReq.PathBase and httpReq.Headers["X-Forwarded-Prefix"] is what we need to get the base path.
+                                            //For some reason, they are returning as null/blank. Perhaps this has something to do with how the proxy is configured which I don't have control.
+                                            //For the time being, the base path is manually set here that corresponds to the APIM API Url Prefix.
+                                            //In this case we set it to 'sample-app'. 
+
+                                            var basePath = "sample-app";
+                                            var serverUrl = $"{httpReq.Scheme}://{httpReq.Headers["X-Forwarded-Host"]}/{basePath}";
+                                            swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
+                                        }
+                                    });
+                                }
+                            );
+                app.UseSwaggerUI(options =>
+                                    {
+                                        options.RoutePrefix = string.Empty;
+                                        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Africanbiomedtests API");
+                                    }
+                                );
+
+            }
             // migrate database changes on startup (includes initial db creation)
             context.Database.Migrate();
-
-            // generated swagger json and swagger ui middleware
-            app.UseSwagger();
-            app.UseSwaggerUI(x => x.SwaggerEndpoint("/swagger/v1/swagger.json", "Africanbiomedtests API"));
-
             app.UseRouting();
 
             // global cors policy
-            app.UseCors(x => x
-                .SetIsOriginAllowed(origin => true)
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowCredentials());
+            app.UseCors("AllowAll");
 
             // global error handler
             app.UseMiddleware<ErrorHandlerMiddleware>();
@@ -84,7 +120,7 @@ namespace Africanbiomedtests
             // custom jwt auth middleware
             app.UseMiddleware<JwtMiddleware>();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 

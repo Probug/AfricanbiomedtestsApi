@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Africanbiomedtests
-build_property.ProjectDir = /home/caleb/software/dotnet/2021/AMT/
+build_property.ProjectDir = /home/caleb/software/dotnet/2021/Africanbiomedtests/

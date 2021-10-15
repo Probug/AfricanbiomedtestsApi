@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/caleb/software/dotnet/2021/AMT/Africanbiomedtests.csproj": {}
+    "/home/caleb/software/dotnet/2021/Africanbiomedtests/Africanbiomedtests.csproj": {}
   },
   "projects": {
-    "/home/caleb/software/dotnet/2021/AMT/Africanbiomedtests.csproj": {
+    "/home/caleb/software/dotnet/2021/Africanbiomedtests/Africanbiomedtests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/caleb/software/dotnet/2021/AMT/Africanbiomedtests.csproj",
+        "projectUniqueName": "/home/caleb/software/dotnet/2021/Africanbiomedtests/Africanbiomedtests.csproj",
         "projectName": "Africanbiomedtests",
-        "projectPath": "/home/caleb/software/dotnet/2021/AMT/Africanbiomedtests.csproj",
+        "projectPath": "/home/caleb/software/dotnet/2021/Africanbiomedtests/Africanbiomedtests.csproj",
         "packagesPath": "/home/caleb/.nuget/packages/",
-        "outputPath": "/home/caleb/software/dotnet/2021/AMT/obj/",
+        "outputPath": "/home/caleb/software/dotnet/2021/Africanbiomedtests/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/caleb/.nuget/NuGet/NuGet.Config"

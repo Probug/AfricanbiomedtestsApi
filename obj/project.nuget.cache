@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KhIaofx2eDStO1PTNlTLdWhRBYVWu+iSiOy1O6i/xXjQzLhryZitX/RnZ/g9TamZSOj7pghEnPHfLsHLA95P/Q==",
+  "dgSpecHash": "kTNQvohlIQVfXfxppVzYcn+Kim9rQ716avCJKmQlKhwQy3VUenurI+w97gwqiVe9cWTTMv8erIly+LGsD6ieSw==",
   "success": true,
-  "projectFilePath": "/home/caleb/software/dotnet/2021/AMT/Africanbiomedtests.csproj",
+  "projectFilePath": "/home/caleb/software/dotnet/2021/Africanbiomedtests/Africanbiomedtests.csproj",
   "expectedPackageFiles": [
     "/home/caleb/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
     "/home/caleb/.nuget/packages/automapper.collection/7.0.0/automapper.collection.7.0.0.nupkg.sha512",

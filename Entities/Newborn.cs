@@ -8,16 +8,18 @@ namespace Africanbiomedtests.Entities
 {
         public class Newborn
     {
-        [Key]
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public Guid Id { get; set; }
+        public string FullName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
         public string Gender { get; set; }
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
         public Account Account { get; set; }
+        public Guid HealthcareProviderId { get; set; }
+        [ForeignKey("HealthcareProviderId")]
         public HealthcareProvider HealthcareProvider { get; set; }
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }

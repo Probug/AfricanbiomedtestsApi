@@ -8,11 +8,13 @@ namespace Africanbiomedtests.Entities
 {
         public class HealthcareProvider
     {
-        [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Email { get; set; }
-        public string FullName { get; set; }
-        public string Street { get; set; }
+        public string HealthcareProviderName { get; set; }
+        public string CreatedByFullName { get; set; }
+        public string CreatedByDesignation { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
@@ -28,7 +30,11 @@ namespace Africanbiomedtests.Entities
         public DateTime Created { get; set; }
         public DateTime? Updated { get; set; }
         public List<RefreshToken> RefreshTokens { get; set; }
-
+        public ICollection<Account> Account { get; set; } // Linked Table        
+        public ICollection<Newborn> Newborn { get; set; } // Linked Table
+        public ICollection<MedTest> MedTest { get; set; } // Linked Table
+        public ICollection<MedTestOrder> MedTestOrder { get; set; } // Linked Table
+        public ICollection<MedTestResult> MedTestResult { get; set; } // Linked Table
         public bool OwnsToken(string token) 
         {
             return this.RefreshTokens?.Find(x => x.Token == token) != null;
