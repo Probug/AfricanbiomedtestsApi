@@ -9,7 +9,7 @@ namespace Africanbiomedtests.Models.Accounts
 
         [Required]
         [MinLength(6)]
-        public string Password { get; set; }
+        public string word { get; set; }
 
         [Required]
         [Compare("Password")]

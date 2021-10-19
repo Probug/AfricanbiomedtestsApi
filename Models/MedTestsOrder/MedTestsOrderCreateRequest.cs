@@ -7,20 +7,19 @@ namespace Africanbiomedtests.Models.MedTestsOrder
 {
     public class MedTestsOrderCreateRequest
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
-        [Required]
-        public int? MedTestId { get; set; }
+        public Guid MedTestId { get; set; }
         [ForeignKey("MedTestId")]
         public MedTest MedTest { get; set; }
-        public int? healthcareProviderId { get; set; }
-        [ForeignKey("healthcareProviderId")]
-        public HealthcareProvider healthcareProvider { get; set; }
-        public int? accountId { get; set; }
-        [ForeignKey("accountId")]
+        public Guid HealthcareProviderId { get; set; }
+        [ForeignKey("HealthcareProviderId")]
+        public HealthcareProvider HealthcareProvider { get; set; }
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
         public Account Account { get; set; }
-        public int? newbornId { get; set; }
-        [ForeignKey("newbornId")]
+        public Guid NewbornId { get; set; }
+        [ForeignKey("NewbornId")]
         public Newborn Newborn { get; set; }
 
         [Required]

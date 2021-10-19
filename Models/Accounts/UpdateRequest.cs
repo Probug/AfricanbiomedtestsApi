@@ -10,9 +10,11 @@ namespace Africanbiomedtests.Models.Accounts
         private string _role;
         private string _email;
         
-        public string Title { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
 
         [EnumDataType(typeof(Role))]
         public string Role

@@ -6,17 +6,9 @@ namespace Africanbiomedtests.Models.Accounts
     public class CreateRequest
     {
         [Required]
-        public string Title { get; set; }
-
-        [Required]
         [StringLength(30)]
         [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
-        public string LastName { get; set; }
+        public string FullName { get; set; }
 
         [Required]
         [EnumDataType(typeof(Role))]
@@ -33,5 +25,8 @@ namespace Africanbiomedtests.Models.Accounts
         [Required]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+        
+        [Required]
+        public bool AcceptTerms { get; set; }
     }
 }

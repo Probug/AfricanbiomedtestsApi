@@ -6,7 +6,7 @@ namespace Africanbiomedtests.Models.MedTestsResults
 {
     public class MedTestsResultUpdateRequest
     {
-        
+        public Guid Id { get; set; }
         public MedTest MedTest { get; set; }
         public Account Account { get; set; }
         public HealthcareProvider HealthcareProvider { get; set; }

@@ -7,9 +7,9 @@ namespace Africanbiomedtests.Models.MedTestsOrder
     public class MedTestsOrderUpdateRequest
     {
         
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public MedTest MedTest { get; set; }
-        public HealthcareProvider healthcareProvider { get; set; }
+        public HealthcareProvider HealthcareProvider { get; set; }
         public Account Account { get; set; }
         public Newborn Newborn { get; set; }
         public string PaymentStatus { get; set; }

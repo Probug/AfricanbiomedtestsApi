@@ -6,16 +6,18 @@ namespace Africanbiomedtests.Models.MedTestsResults
 {
     public class MedTestsResultCreateRequest
     {
-
-        [Required]
+        public Guid Id { get; set; }
+        public Guid MedTestId { get; set; }
+        [ForeignKey("MedTestId")]
         public MedTest MedTest { get; set; }
-
-        [Required]
-        public Account Account { get; set; }
-
-        [Required]
+        public Guid HealthcareProviderId { get; set; }
+        [ForeignKey("HealthcareProviderId")]
         public HealthcareProvider HealthcareProvider { get; set; }
-
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
+        public Account Account { get; set; }
+        public Guid NewbornId { get; set; }
+        [ForeignKey("NewbornId")]
         public Newborn Newborn { get; set; }
 
         [Required]

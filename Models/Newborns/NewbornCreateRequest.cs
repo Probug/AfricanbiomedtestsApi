@@ -10,12 +10,7 @@ namespace Africanbiomedtests.Models.Newborns
         [Required]
         [StringLength(30)]
         [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
-        public string FirstName { get; set; }
-
-        [Required]
-        [StringLength(30)]
-        [RegularExpression(@"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)")]
-        public string LastName { get; set; }
+        public string FullName { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
@@ -27,8 +22,12 @@ namespace Africanbiomedtests.Models.Newborns
 
         //[Required]
         public DateTime Created { get; set; }
-        public Account Account { get; set; }
+        public Guid HealthcareProviderId { get; set; }
+        [ForeignKey("HealthcareProviderId")]
         public HealthcareProvider HealthcareProvider { get; set; }
+        public Guid AccountId { get; set; }
+        [ForeignKey("AccountId")]
+        public Account Account { get; set; }
 
     }
 }
